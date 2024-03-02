@@ -3,7 +3,6 @@
 #include "SDL.h"
 
 #include <iostream>
-#include <cmath>
 
 // Macros
 #define DEBUG_ON true

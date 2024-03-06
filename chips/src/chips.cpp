@@ -5,10 +5,14 @@ int main(int argc, char *argv[])
 {
 	Window *window = new Window("App", 1280, 640, DEBUG_ON);
 
-	uint32_t pixels[64 * 32]{ 0 };
-	for (uint32_t i = 0; i < 64 * 32; i += 1)
+	uint8_t pixels[64 * 32]{ 0 };
+
+	uint8_t black = SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB332), 0, 0, 0);
+	uint8_t white = SDL_MapRGB(SDL_AllocFormat(SDL_PIXELFORMAT_RGB332), 255, 255, 255);
+	
+	for (uint16_t i = 0; i < 64 * 32; ++i)
 	{
-		pixels[i] = SDL_MapRGBA(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888), i*255/2048, i*255/2048, i*255/2048, 255);
+		pixels[i] = (i/64) % 2 ? (i % 2 ? black : white) : (i % 2 ? white : black);
 	}
 
 	while (window->running())
@@ -19,6 +23,5 @@ int main(int argc, char *argv[])
 	}
 
 	delete window;
-
 	return 0;
 }

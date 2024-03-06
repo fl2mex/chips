@@ -10,7 +10,7 @@ public:
 	bool running() { return isRunning; }
 
 	void HandleEvents();
-	void Update(uint32_t pixels[64*32]);
+	void Update(uint8_t pixels[64*32]);
 	void Render();
 
 private:

@@ -14,7 +14,7 @@ Window::Window(std::string title, uint32_t w, uint32_t h, bool debug)
 	if (!m_Renderer) throw std::exception("nuh uh");
 	log("Window: Renderer Created");
 
-	m_Framebuffer = SDL_CreateTexture(m_Renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 64, 32);
+	m_Framebuffer = SDL_CreateTexture(m_Renderer, SDL_PIXELFORMAT_RGB332, SDL_TEXTUREACCESS_TARGET, 64, 32);
 	if (!m_Framebuffer) throw std::exception("nuh uh");
 	log("Window: Framebuffer Created");
 
@@ -40,9 +40,9 @@ void Window::HandleEvents()
 	}
 }
 
-void Window::Update(uint32_t pixels[64*32])
+void Window::Update(uint8_t pixels[64*32])
 {
-	SDL_UpdateTexture(m_Framebuffer, nullptr, pixels, 64*sizeof(uint32_t));
+	SDL_UpdateTexture(m_Framebuffer, nullptr, pixels, 64*sizeof(uint8_t));
 }
 
 void Window::Render()

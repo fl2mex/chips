@@ -7,7 +7,7 @@ public:
 	Window(std::string title, uint32_t w, uint32_t h, bool debug);
 	~Window();
 
-	bool running() { return isRunning; }
+	bool Running() { return isRunning; }
 
 	void HandleEvents();
 	void Update(uint8_t pixels[64*32]);

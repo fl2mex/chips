@@ -27,7 +27,7 @@ Window::~Window()
 	SDL_DestroyRenderer(m_Renderer);
 	SDL_DestroyWindow(m_Window);
 	SDL_Quit();
-	log("Goodbye!");
+	log("Goodbye, Window!");
 }
 
 void Window::HandleEvents()
